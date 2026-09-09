@@ -1,0 +1,53 @@
+최종 요구사항/평가 증빙 체크리스트
+
+01. 테이블 4개와 PK
+- 1.schema.sql: member, genre, movie, review 및 모든 PRIMARY KEY
+- README.md: 테이블 역할/PK 선정 이유
+
+02. FK 3개와 1:N 관계
+- result/fk_validation.txt: PRAGMA 출력 + 각 관계의 도메인 의미 + 각 FK 실패 테스트
+- result/screenshots/fk_validation.png, fk_test_1.png~fk_test_3.png
+
+03. 테이블별 10행 이상 샘플 데이터
+- 2.sample_data.sql: member 10, genre 10, movie 10, review 11
+- result/constraint_validation.txt: NULL/UNIQUE/CHECK/평점 경계값 추가 테스트
+
+04. 핵심 SQL 15개
+- 3.queries.sql: Q01~Q15
+- 각 Q 주석에 result/qXX.txt, result/screenshots/qXX.png 매핑
+
+05. 실행 결과 증빙
+- result/q01.txt~q15.txt
+- result/screenshots/q01.png~q15.png (각 쿼리별 실제 SQLite 검증 실행 결과 이미지)
+
+06. 테이블 분리/정규화 설명
+- README.md, 1.schema.sql, result/design_evidence.txt
+
+07. FK 도메인 의미
+- result/fk_validation.txt: genre 1:N movie, member 1:N review, movie 1:N review 사례
+
+08. 컬럼 타입 선정 근거
+- README.md, 1.schema.sql, result/design_evidence.txt
+
+09. 인덱스
+- 3.queries.sql Q15, result/q15.txt, result/screenshots/q15.png
+- EXPLAIN QUERY PLAN에서 idx_review_movie_id 사용 확인
+
+10. DB와 엑셀 비교
+- README.md, result/design_evidence.txt
+
+11. PK/FK 역할 차이
+- README.md, 1.schema.sql, result/design_evidence.txt
+
+12. INNER JOIN / LEFT JOIN 차이
+- README.md, 3.queries.sql, result/join_comparison.txt
+
+13. GROUP BY / COUNT / AVG 설명
+- README.md, 3.queries.sql, result/aggregation_evidence.txt
+
+14. 복합 쿼리 단계 분해
+- Q12 NOT EXISTS: 3.queries.sql 주석, README.md, result/q12_logic.txt
+
+15. 난관과 해결 과정
+- README.md 트러블슈팅, result/fk_validation.txt
+- 연결별 PRAGMA foreign_keys 문제, schema/sample 재실행 중복 문제 정리

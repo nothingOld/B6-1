@@ -1,6 +1,6 @@
 Q15
 유형: CREATE INDEX
-목적: 영화별 리뷰 조회 및 JOIN 시 검색 성능 향상을 위해 review.movie_id에 인덱스를 생성한다.
+목적: review.movie_id 인덱스를 생성하고 사용 여부를 확인한다.
 
 [SQL]
 CREATE INDEX idx_review_movie_id
@@ -11,14 +11,7 @@ seq | name                | unique | origin | partial
 ----+---------------------+--------+--------+--------
 0   | idx_review_movie_id | 0      | c      | 0      
 
-확인: idx_review_movie_id 인덱스가 생성됨
-
 [인덱스 사용 계획 확인 - SQLite 전용 EXPLAIN QUERY PLAN]
-EXPLAIN QUERY PLAN
-SELECT *
-  FROM review
- WHERE movie_id = 1;
-
 id | parent | notused | detail                                                    
 ---+--------+---------+-----------------------------------------------------------
 3  | 0      | 0       | SEARCH review USING INDEX idx_review_movie_id (movie_id=?)

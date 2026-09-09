@@ -1,0 +1,49 @@
+최종 자동 검증 보고서
+
+- schema 실행: PASS
+- sample 실행: PASS
+- member 행수 >=10: PASS
+- genre 행수 >=10: PASS
+- movie 행수 >=10: PASS
+- review 행수 >=10: PASS
+- FK 3개: PASS
+- Q01~Q15 순차 실행: PASS
+- Q01 txt: PASS
+- Q01 png: PASS
+- Q02 txt: PASS
+- Q02 png: PASS
+- Q03 txt: PASS
+- Q03 png: PASS
+- Q04 txt: PASS
+- Q04 png: PASS
+- Q05 txt: PASS
+- Q05 png: PASS
+- Q06 txt: PASS
+- Q06 png: PASS
+- Q07 txt: PASS
+- Q07 png: PASS
+- Q08 txt: PASS
+- Q08 png: PASS
+- Q09 txt: PASS
+- Q09 png: PASS
+- Q10 txt: PASS
+- Q10 png: PASS
+- Q11 txt: PASS
+- Q11 png: PASS
+- Q12 txt: PASS
+- Q12 png: PASS
+- Q13 txt: PASS
+- Q13 png: PASS
+- Q14 txt: PASS
+- Q14 png: PASS
+- Q15 txt: PASS
+- Q15 png: PASS
+- fk_validation.txt: PASS
+- constraint_validation.txt: PASS
+- design_evidence.txt: PASS
+- join_comparison.txt: PASS
+- aggregation_evidence.txt: PASS
+- q12_logic.txt: PASS
+- requirements_evidence.txt: PASS
+- ERD.png: PASS
+- bonus2-error.png: PASS

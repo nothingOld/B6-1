@@ -11,8 +11,8 @@ SELECT m.member_id
  WHERE r.review_id IS NULL;
 
 [실행 결과]
-member_id | name
-----------+-----
-10        | 임하늘 
+member_id | name  
+----------+-------
+10        | 임하늘
 
 총 1행

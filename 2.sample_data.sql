@@ -2,8 +2,16 @@
 -- 현재 DB 연결에서 외래 키(FK) 제약조건을 활성화한다.
 PRAGMA foreign_keys = ON;
 
--- 외래 키 확인 1이면 정상
+-- 외래 키 확인: 1이면 정상
 PRAGMA foreign_keys;
+
+-- 샘플 데이터 검증 포인트
+-- member_id = 10(임하늘)은 review가 없어 LEFT JOIN/NOT EXISTS의 비매칭 케이스로 사용한다.
+-- movie_id = 10(사라진 기록)은 review가 없어 LEFT JOIN 집계에서 review_count = 0 케이스로 사용한다.
+-- rating은 CHECK (1~5) 범위 안의 값을 사용하며, FK 오류는 보너스 2에서 별도로 검증한다.
+
+-- 추가 경계/예외 검증은 샘플 데이터를 변경하지 않도록 별도 검증으로 수행한다.
+-- rating 1/5 정상, rating 0/6 CHECK 실패, comment NULL 허용 여부를 result/constraint_validation.txt에 기록한다.
 
 -- 1. 회원 샘플 데이터 10건
 INSERT INTO member (member_id, name, email)

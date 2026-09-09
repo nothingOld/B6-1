@@ -1,0 +1,9 @@
+GROUP BY와 집계 함수 설명
+
+GROUP BY: 같은 기준 값을 가진 행을 그룹으로 묶어 그룹 단위 계산을 가능하게 한다.
+COUNT: 그룹별 개수를 계산한다. Q09 영화별 리뷰 수, Q11 회원별 리뷰 작성 수에 사용했다.
+AVG: 그룹별 평균을 계산한다. Q10 영화별 평균 평점에 사용했다.
+SUM: 그룹별 숫자 합계를 계산한다. 과제는 COUNT/SUM/AVG 중 2개 이상을 요구하므로 COUNT와 AVG로 충족했다.
+
+Q09 처리 흐름: movie LEFT JOIN review -> 영화별 GROUP BY -> COUNT(review_id) -> 리뷰 수 내림차순 정렬.
+리뷰가 없는 영화도 LEFT JOIN으로 남기 때문에 사라진 기록의 review_count는 0이다.

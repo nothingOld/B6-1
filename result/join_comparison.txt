@@ -1,0 +1,9 @@
+INNER JOIN과 LEFT JOIN 비교
+
+INNER JOIN: 양쪽 테이블에서 JOIN 조건이 일치하는 행만 반환한다.
+Q05에서는 review가 있는 회원만 결과에 포함되므로 review가 없는 임하늘(member_id=10)은 제외된다.
+
+LEFT JOIN: 왼쪽 테이블의 모든 행을 유지하고 오른쪽에 일치하는 행이 없으면 오른쪽 컬럼을 NULL로 반환한다.
+Q08에서는 member를 왼쪽에 두고 r.review_id IS NULL을 조건으로 사용하여 리뷰가 없는 임하늘을 찾는다.
+
+실제 결과: Q08 -> member_id=10, name=임하늘

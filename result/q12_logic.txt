@@ -1,0 +1,9 @@
+Q12 복합 쿼리 단계별 설명
+
+1. 바깥 SELECT가 member 테이블의 회원을 한 명씩 확인한다.
+2. 내부 상관 서브쿼리가 현재 회원의 member_id와 같은 review가 존재하는지 검사한다.
+3. 리뷰가 존재하면 EXISTS는 TRUE, NOT EXISTS는 FALSE가 되어 해당 회원을 제외한다.
+4. 리뷰가 없으면 NOT EXISTS가 TRUE가 되어 해당 회원을 결과에 포함한다.
+5. 샘플 데이터에서는 임하늘(member_id=10)만 반환된다.
+
+처리 흐름: member 조회 -> 회원별 review 존재 여부 검사 -> 리뷰 없는 회원 선택
