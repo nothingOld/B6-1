@@ -1,0 +1,22 @@
+Q13
+유형: UPDATE
+목적: review_id가 5인 리뷰의 평점과 내용을 수정한다.
+
+[SQL]
+UPDATE review
+   SET rating = 3
+     , comment = '다시 보니 처음보다 재미있었다.'
+ WHERE review_id = 5;
+
+[변경 전]
+review_id | rating | comment   
+----------+--------+-----------
+5         | 2      | 기대보다 아쉬웠다.
+
+[영향받은 행]
+1
+
+[변경 후 확인]
+review_id | rating | comment          
+----------+--------+------------------
+5         | 3      | 다시 보니 처음보다 재미있었다.

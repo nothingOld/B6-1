@@ -1,0 +1,26 @@
+Q07
+유형: INNER JOIN
+목적: 각 영화의 제목과 장르를 조회한다.
+
+[SQL]
+SELECT mo.title
+     , g.genre_name
+  FROM movie AS mo
+ INNER JOIN genre AS g
+    ON mo.genre_id = g.genre_id;
+
+[실행 결과]
+title   | genre_name
+--------+-----------
+우주 여행   | SF        
+마지막 봄   | 드라마       
+도시의 추격자 | 액션        
+웃음 공장   | 코미디       
+우리의 여름  | 로맨스       
+닫힌 방    | 스릴러       
+별빛 친구들  | 애니메이션     
+마법의 숲   | 판타지       
+푸른 지구   | 다큐멘터리     
+사라진 기록  | 미스터리      
+
+총 10행

@@ -1,0 +1,18 @@
+Q08
+유형: LEFT JOIN
+목적: 리뷰를 한 번도 작성하지 않은 회원을 조회한다.
+
+[SQL]
+SELECT m.member_id
+     , m.name
+  FROM member AS m
+  LEFT JOIN review AS r
+    ON m.member_id = r.member_id
+ WHERE r.review_id IS NULL;
+
+[실행 결과]
+member_id | name
+----------+-----
+10        | 임하늘 
+
+총 1행

@@ -24,7 +24,7 @@ SELECT movie_id
  LIMIT 5;
 
 
--- Q4. 평점이 4점 이상인 리뷰를 높은 평점 순으로 조회한다.(WHERE + ORDEER BY)
+-- Q4. 평점이 4점 이상인 리뷰를 높은 평점 순으로 조회한다.(WHERE + ORDER BY)
 SELECT review_id
      , movie_id
      , rating

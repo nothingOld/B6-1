@@ -1,0 +1,29 @@
+Q10
+유형: 집계 - AVG + GROUP BY
+목적: 리뷰가 존재하는 영화의 평균 평점을 조회한다.
+
+[SQL]
+SELECT mo.movie_id
+     , mo.title
+     , AVG(r.rating) AS average_rating
+  FROM movie AS mo
+ INNER JOIN review AS r
+    ON mo.movie_id = r.movie_id
+ GROUP BY mo.movie_id
+        , mo.title
+ ORDER BY average_rating DESC;
+
+[실행 결과]
+movie_id | title   | average_rating
+---------+---------+---------------
+3        | 도시의 추격자 | 5.0           
+6        | 닫힌 방    | 5.0           
+1        | 우주 여행   | 4.5           
+5        | 우리의 여름  | 4.0           
+7        | 별빛 친구들  | 4.0           
+9        | 푸른 지구   | 4.0           
+2        | 마지막 봄   | 3.0           
+8        | 마법의 숲   | 3.0           
+4        | 웃음 공장   | 2.0           
+
+총 9행

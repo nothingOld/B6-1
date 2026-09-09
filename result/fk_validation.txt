@@ -1,0 +1,32 @@
+FK 검증 결과
+
+[현재 연결의 FK 활성화 상태]
+PRAGMA foreign_keys;
+
+foreign_keys
+------------
+1
+
+[ movie 테이블 FK ]
+PRAGMA foreign_key_list(movie);
+
+id | seq | table | from     | to       | on_update | on_delete | match
+---+-----+-------+----------+----------+-----------+-----------+------
+0  | 0   | genre | genre_id | genre_id | NO ACTION | NO ACTION | NONE 
+
+[ review 테이블 FK ]
+PRAGMA foreign_key_list(review);
+
+id | seq | table  | from      | to        | on_update | on_delete | match
+---+-----+--------+-----------+-----------+-----------+-----------+------
+0  | 0   | movie  | movie_id  | movie_id  | NO ACTION | NO ACTION | NONE 
+1  | 0   | member | member_id | member_id | NO ACTION | NO ACTION | NONE 
+
+[관계 요약]
+movie.genre_id   -> genre.genre_id
+review.movie_id  -> movie.movie_id
+review.member_id -> member.member_id
+
+[보너스 2 무결성 검증]
+존재하지 않는 member_id = 999를 review에 입력하면 FK 제약조건에 의해 거부됩니다.
+실제 오류 화면은 docs/bonus2-error.png에 저장되어 있습니다.

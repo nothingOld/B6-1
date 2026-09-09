@@ -1,0 +1,20 @@
+Q12
+유형: 상관 서브쿼리 - NOT EXISTS
+목적: 서브쿼리를 이용해 리뷰를 작성하지 않은 회원을 조회한다.
+
+[SQL]
+SELECT m.member_id
+     , m.name
+  FROM member AS m
+ WHERE NOT EXISTS (
+       SELECT 1
+         FROM review AS r
+        WHERE r.member_id = m.member_id
+       );
+
+[실행 결과]
+member_id | name
+----------+-----
+10        | 임하늘 
+
+총 1행

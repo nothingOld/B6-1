@@ -1,0 +1,20 @@
+Q14
+유형: DELETE
+목적: review_id가 11인 리뷰를 삭제한다.
+
+[SQL]
+DELETE
+  FROM review
+ WHERE review_id = 11;
+
+[삭제 전 리뷰 수]
+11
+
+[영향받은 행]
+1
+
+[삭제 후 리뷰 수]
+10
+
+[review_id = 11 존재 여부]
+조회 결과 없음 (삭제 확인)

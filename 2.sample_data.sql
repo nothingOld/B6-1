@@ -2,7 +2,7 @@
 -- 현재 DB 연결에서 외래 키(FK) 제약조건을 활성화한다.
 PRAGMA foreign_keys = ON;
 
--- 왜래키 확인 1이면 정상
+-- 외래 키 확인 1이면 정상
 PRAGMA foreign_keys;
 
 -- 1. 회원 샘플 데이터 10건

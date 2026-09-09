@@ -1,0 +1,22 @@
+Q03
+유형: 기본 조회 - ORDER BY + LIMIT
+목적: 최신 영화 중 상위 5개를 조회한다.
+
+[SQL]
+SELECT movie_id
+     , title
+     , release_year
+  FROM movie
+ ORDER BY release_year DESC
+ LIMIT 5;
+
+[실행 결과]
+movie_id | title   | release_year
+---------+---------+-------------
+10       | 사라진 기록  | 2025        
+1        | 우주 여행   | 2024        
+6        | 닫힌 방    | 2024        
+3        | 도시의 추격자 | 2023        
+8        | 마법의 숲   | 2023        
+
+총 5행
