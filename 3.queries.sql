@@ -44,9 +44,7 @@ SELECT m.name
     ON m.member_id = r.member_id;
 
 
----------------
--- JOIN 쿼리 4개
----------------
+/* JOIN 쿼리 4개 */
 
 -- Q6. 영화 제목과 해당 영화의 평점 및 리뷰 내용을 조회한다.(INNER JOIN)
 -- movie 1 : N review
@@ -77,9 +75,7 @@ SELECT m.member_id
  WHERE r.review_id IS NULL;
 
 
----------------
--- 집계쿼리 3개
----------------
+/* 집계쿼리 3개 */
 
 -- Q9. 영화별 리뷰 개수를 조회한다.(COUNT)
 SELECT mo.movie_id
@@ -117,9 +113,7 @@ SELECT m.member_id
  ORDER BY review_count DESC;
 
 
----------------
--- 서브쿼리 1개
----------------
+/* 서브쿼리 1개 */
 
 -- Q12. 서브쿼리를 이용해 리뷰를 작성하지 않은 회원을 조회한다.(NOT EXISTS)
 SELECT m.member_id
@@ -132,9 +126,7 @@ SELECT m.member_id
        );
 
 
----------------
--- 데이터 수정(UPDATE) 및 삭제(DELETE)
----------------
+/* 데이터 수정(UPDATE) 및 삭제(DELETE) */
 
 -- Q13. review_id가 5인 리뷰의 평점과 내용을 수정한다.
 UPDATE review
@@ -160,12 +152,78 @@ SELECT COUNT(*) AS review_count
   FROM review;
 
 
----------------
--- 인덱스 생성 (CREATE INDEX)
----------------
+/* 인덱스 생성 (CREATE INDEX) */
 
 -- Q15. 영화별 리뷰 조회 및 JOIN 시 검색 성능 향상을 위해 review.movie_id 컬럼에 인덱스를 생성한다.
 CREATE INDEX idx_review_movie_id
     ON review(movie_id);
+
+
+/* 보너스 1. 조인 1개를 두 방식으로 풀기 */
+
+-- BONUS 1-1. LEFT JOIN 방식
+-- 리뷰를 한 번도 작성하지 않은 회원을 조회한다.
+SELECT m.member_id
+     , m.name
+  FROM member AS m
+  LEFT JOIN review AS r
+    ON m.member_id = r.member_id
+ WHERE r.review_id IS NULL;
+
+
+-- BONUS 1-2. NOT EXISTS 서브쿼리 방식
+-- 리뷰를 한 번도 작성하지 않은 회원을 조회한다.
+SELECT m.member_id
+     , m.name
+  FROM member AS m
+ WHERE NOT EXISTS (
+       SELECT 1
+         FROM review AS r
+        WHERE r.member_id = m.member_id
+       );
+
+
+/*  보너스 2. 데이터 정합성 깨뜨려 보기 */
+
+-- SQLite 전용 문법:
+-- 현재 DB 연결에서 외래 키(FK) 제약조건을 활성화한다.
+-- FK 활성화 확인
+PRAGMA foreign_keys = ON;
+PRAGMA foreign_keys;
+
+-- BONUS 2. FK 무결성 검증
+-- 존재하지 않는 member_id 999를 참조하여 FK 오류가 발생하는지 확인한다.
+INSERT INTO review (
+       review_id
+     , member_id
+     , movie_id
+     , rating
+     , comment
+     , created_at
+) VALUES (
+       100
+     , 999
+     , 1
+     , 5
+     , 'FK 오류 확인용 리뷰'
+     , '2026-09-09'
+);
+
+-- FK 비활성화시 확인용
+SELECT * FROM review;
+DELETE FROM review WHERE review_id = 100;
+
+
+/*
+보너스 3. 미니 리포트 만들기
+이 DB로 뽑을 수 있는 핵심 지표 3개를 정의하고 각각을 구하는 SQL을 최종본으로 정리한다.
+
+(핵심 지표 3개)
+| 지표   | 의미          |
+| ---- | -----------   |
+| 지표 1 | 영화별 리뷰 수    |
+| 지표 2 | 영화별 평균 평점   |
+| 지표 3 | 회원별 리뷰 작성 수 |
+*/
 
 
