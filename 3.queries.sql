@@ -227,3 +227,40 @@ DELETE FROM review WHERE review_id = 100;
 */
 
 
+-- BONUS 3-1. 영화별 리뷰 수
+-- 영화별로 작성된 리뷰의 개수를 집계한다.
+SELECT mo.movie_id
+     , mo.title
+     , COUNT(r.review_id) AS review_count
+  FROM movie AS mo
+  LEFT JOIN review AS r
+    ON mo.movie_id = r.movie_id
+ GROUP BY mo.movie_id
+        , mo.title
+ ORDER BY review_count DESC;
+
+
+-- BONUS 3-2. 영화별 평균 평점
+-- 영화별 리뷰 평점의 평균을 집계한다.
+SELECT mo.movie_id
+     , mo.title
+     , AVG(r.rating) AS average_rating
+  FROM movie AS mo
+ INNER JOIN review AS r
+    ON mo.movie_id = r.movie_id
+ GROUP BY mo.movie_id
+        , mo.title
+ ORDER BY average_rating DESC;
+
+
+-- BONUS 3-3. 회원별 리뷰 작성 수
+-- 회원별로 작성한 리뷰의 개수를 집계한다.
+SELECT m.member_id
+     , m.name
+     , COUNT(r.review_id) AS review_count
+  FROM member AS m
+  LEFT JOIN review AS r
+    ON m.member_id = r.member_id
+ GROUP BY m.member_id
+        , m.name
+ ORDER BY review_count DESC;
